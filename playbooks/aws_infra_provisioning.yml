@@ -21,7 +21,7 @@
           # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.4/html/automation_controller_user_guide/controller-credentials#access_amazon_ec2_credentials_in_an_ansible_playbook
           access_key: '{{ lookup("env", "AWS_ACCESS_KEY_ID") }}'
           secret_key: '{{ lookup("env", "AWS_SECRET_ACCESS_KEY") }}'
-          webserver_count: "{{ (high_availability | default(false)) | ternary(server_count | default(3), 1) }}"
+          webserver_count: "{{ (high_availability | default(false)) | ternary(3, 1) }}"
           instance_name_lb: "{{ application_name }}_lb"
           instance_name_webserver: "{{ application_name }}_web"
           application_name: "{{ application_name }}"
