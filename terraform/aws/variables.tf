@@ -19,7 +19,7 @@ variable "instance_name_webserver" {
   type = string
 }
 
-variable "project_name" {
+variable "application_name" {
   type = string
 }
 

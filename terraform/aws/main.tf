@@ -98,8 +98,8 @@ resource "aws_instance" "loadbalancer" {
   tags ={
       Name = var.instance_name_lb,
       Owner = "nmorey",
-      type =  "${var.project_name}_lb",
-      project =  var.project_name
+      type =  "${var.application_name}_lb",
+      project =  var.application_name
       provider: "aws"
     }
 }
@@ -116,8 +116,8 @@ resource "aws_instance" "webserver" {
   tags ={
       Name = "${var.instance_name_webserver}_${count.index}",
       Owner = "nmorey",
-      type =  "${var.project_name}_web",
-      project =  var.project_name
+      type =  "${var.application_name}_web",
+      project =  var.application_name
       provider: "aws"
     }
 }
