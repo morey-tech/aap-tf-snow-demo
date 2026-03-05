@@ -6,13 +6,17 @@
   tasks:
     - name: Sanitize project name
       ansible.builtin.set_fact:
-        sanitized_project_name: "{{ project_name | lower | regex_replace('[^a-z0-9]', '_') | trim('_') }}"
+        sanitized_application_name: "{{ application_name | lower | regex_replace('[^a-z0-9]', '_') | trim('_') }}"
 
     - name: Set global workflow variables
       ansible.builtin.set_stats:
         data:
-          project_name: "{{ sanitized_project_name }}"
-          itsm_request_id: "{{ request_id }}"
+          application_name: "{{ sanitized_application_name }}"
+          instance_type: "{{ instance_type }}"
+          high_availability: "{{ high_availability }}"
+          cost_centre_code: "{{ cost_centre_code }}"
+          infra_state: "{{ infra_state }}"
+          request_item_id: "{{ request_item_id }}"
           # Group names derived from AWS instance tags based on project_name.
-          lb_group_name: "tag_{{ sanitized_project_name }}_lb"
-          ws_group_name: "tag_{{ sanitized_project_name }}_web"
+          lb_group_name: "tag_{{ sanitized_application_name }}_lb"
+          ws_group_name: "tag_{{ sanitized_application_name }}_web"
