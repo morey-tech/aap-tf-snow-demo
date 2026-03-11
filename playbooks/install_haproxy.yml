@@ -13,8 +13,11 @@
     - name: Gather facts for the first time
       ansible.builtin.setup:
 
+    - ansible.builtin.debug:
+        msg: "{{ groups }}"
+
   roles:
     - role: haproxy-config
       vars:
-        lb_group_name: "{{ project_name }}_lb"
-        ws_group_name: "{{ project_name }}_web"
+        lb_group_name: "{{ sanitized_application_name }}_lb"
+        ws_group_name: "{{ sanitized_application_name }}_web"
