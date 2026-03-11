@@ -12,7 +12,7 @@
       ansible.builtin.set_stats:
         aggregate: false  # Replace existing stats to overwrite the application_name.
         data:
-          application_name: "{{ sanitized_application_name }}"
+          sanitized_application_name: "{{ sanitized_application_name }}"
           instance_type: "{{ instance_type }}"
           high_availability: "{{ high_availability }}"
           cost_centre_code: "{{ cost_centre_code }}"

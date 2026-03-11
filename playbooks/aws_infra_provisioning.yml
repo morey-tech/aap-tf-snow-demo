@@ -22,9 +22,9 @@
           access_key: '{{ lookup("env", "AWS_ACCESS_KEY_ID") }}'
           secret_key: '{{ lookup("env", "AWS_SECRET_ACCESS_KEY") }}'
           webserver_count: "{{ (high_availability | default(false)) | ternary(3, 1) }}"
-          instance_name_lb: "{{ application_name }}_lb"
-          instance_name_webserver: "{{ application_name }}_web"
-          application_name: "{{ application_name }}"
+          instance_name_lb: "{{ sanitized_application_name }}_lb"
+          instance_name_webserver: "{{ sanitized_application_name }}_web"
+          application_name: "{{ sanitized_application_name }}"
         backend_config:
           endpoints: "{s3 = \"https://{{ tf_backend_s3 }}\"}"
           insecure: "true"
