@@ -19,5 +19,5 @@
           infra_state: "{{ infra_state }}"
           request_item_id: "{{ request_item_id }}"
           # Group names derived from AWS instance tags based on project_name.
-          lb_group_name: "tag_{{ sanitized_application_name }}_lb"
-          ws_group_name: "tag_{{ sanitized_application_name }}_web"
+          lb_group_name: "{{ sanitized_application_name }}_lb"
+          ws_group_name: "{{ sanitized_application_name }}_web"

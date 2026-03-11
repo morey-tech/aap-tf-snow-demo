@@ -18,6 +18,7 @@
 
   roles:
     - role: haproxy-config
-      vars:
-        lb_group_name: "{{ sanitized_application_name }}_lb"
-        ws_group_name: "{{ sanitized_application_name }}_web"
+      ## Set by workflow
+      # vars:
+      #   lb_group_name: "{{ sanitized_application_name }}_lb"
+      #   ws_group_name: "{{ sanitized_application_name }}_web"
