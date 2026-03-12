@@ -7,7 +7,7 @@
     # ServiceNow instance configuration
     snow_instance: ""
     snow_table: "sc_req_item"  # "Resource" == table name.
-    snow_sys_id: ""  # Required: sys_id of the RITM to comment on
+    requested_item_sys_id: ""  # Required: sys_id of the RITM to comment on
     snow_comment: ""  # Required: comment text to post
 
     # ServiceNow authentication
@@ -24,7 +24,7 @@
         # api_path: "api/now/table/{{ snow_table }}/{{ snow_sys_id }}"
         action: patch
         resource: "{{ snow_table }}"
-        sys_id: "{{ snow_sys_id }}"
+        sys_id: "{{ requested_item_sys_id }}"
         data:
           comments: "{{ snow_comment }}"
       register: comment_result
