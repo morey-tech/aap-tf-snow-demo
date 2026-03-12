@@ -3,5 +3,5 @@ collections:
   - name: community.general
   - name: ansible.posix
     version: 1.5.4
-  - name: azure.azcollection
   - name: infra.aap_configuration
+  - name: servicenow.itsm
