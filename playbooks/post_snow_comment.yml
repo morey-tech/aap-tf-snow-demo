@@ -31,7 +31,7 @@
 
     - name: Display result
       ansible.builtin.debug:
-        msg: "Comment posted successfully to RITM {{ snow_sys_id }}"
+        msg: "Comment posted successfully to RITM {{ comment_result.record.number }}"
         verbosity: 0
       when: comment_result.changed
 
