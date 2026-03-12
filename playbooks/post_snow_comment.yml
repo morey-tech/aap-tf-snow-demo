@@ -26,6 +26,7 @@
         resource: "{{ snow_table }}"
         sys_id: "{{ requested_item_sys_id }}"
         data:
+          state: "3"
           comments: "{{ snow_comment }}"
       register: comment_result
 
