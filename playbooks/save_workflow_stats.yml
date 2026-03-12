@@ -17,7 +17,8 @@
           high_availability: "{{ high_availability }}"
           cost_centre_code: "{{ cost_centre_code }}"
           infra_state: "{{ infra_state }}"
-          request_item_id: "{{ request_item_id }}"
+          requested_item_id: "{{ requested_item_id }}"
+          requested_item_sys_id: "{{ requested_item_sys_id }}"
           # Group names derived from AWS instance tags based on project_name.
           lb_group_name: "{{ sanitized_application_name }}_lb"
           ws_group_name: "{{ sanitized_application_name }}_web"
