@@ -1,0 +1,41 @@
+---
+- name: Post comment to ServiceNow Request Item
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    # ServiceNow instance configuration
+    snow_instance: ""
+    snow_table: "sc_req_item"  # "Resource" == table name.
+    snow_sys_id: ""  # Required: sys_id of the RITM to comment on
+    snow_comment: ""  # Required: comment text to post
+
+    # ServiceNow authentication
+    snow_username: ""  # Required: ServiceNow username
+    snow_password: ""  # Required: ServiceNow password
+
+  tasks:
+    - name: Post comment to ServiceNow RITM
+      servicenow.itsm.api:
+        instance:
+          host: "https://{{ snow_instance }}.service-now.com"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+        # api_path: "api/now/table/{{ snow_table }}/{{ snow_sys_id }}"
+        action: patch
+        resource: "{{ snow_table }}"
+        sys_id: "{{ snow_sys_id }}"
+        data:
+          comments: "{{ snow_comment }}"
+      register: comment_result
+
+    - name: Display result
+      ansible.builtin.debug:
+        msg: "Comment posted successfully to RITM {{ snow_sys_id }}"
+        verbosity: 0
+      when: comment_result.changed
+
+    - name: Show API response
+      ansible.builtin.debug:
+        var: comment_result
+        verbosity: 1
