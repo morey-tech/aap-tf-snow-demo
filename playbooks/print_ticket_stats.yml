@@ -1,8 +1,0 @@
----
-- name: Save the different variable used in the workflow
-  hosts: all
-
-  tasks:
-    - name: Print ServiceNow request_id
-      ansible.builtin.debug:
-        msg: '{{ request_id }}'
