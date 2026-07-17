@@ -113,16 +113,21 @@
     - name: Create Admin Users nmorey on each application
       ansible.builtin.command: "sh {{ eap_home }}/bin/add-user.sh nmorey password"
 
-    - name: Ensures webapp War file has been retrieved from the url
-      ansible.builtin.get_url:
-        url: "{{ app_url }}"
-        dest: "{{ eap_deploy_dir }}"
-        mode: '0644'
+    - name: Copy info application WAR to the server
+      ansible.builtin.copy:
+        src: "{{ app_name }}"
+        dest: "{{ eap_deploy_dir }}/{{ app_name }}"
+        owner: "{{ jboss_eap_user }}"
+        group: "{{ jboss_eap_group }}"
+        mode: "0644"
 
     - name: Deploy the war file on each standalone server (replace if deployed)
-      ansible.builtin.command: "sh {{ eap_home }}/bin/jboss-cli.sh -u=nmorey -p=password --controller=localhost:9990 --connect --command='deploy {{ eap_deploy_dir }}/{{ app_name }} --force'"
-
-    - name: Clear JBoss Zip File
+      ansible.builtin.command: >-
+        sh {{ eap_home }}/bin/jboss-cli.sh -u=nmorey -p=password
+        --controller=localhost:9990 --connect
+        --command='deploy {{ eap_deploy_dir }}/{{ app_name }} --force'
+    
+    - name: Remove staged WAR after deploy
       ansible.builtin.file:
-        state: absent
         dest: "{{ eap_deploy_dir }}/{{ app_name }}"
+        state: absent

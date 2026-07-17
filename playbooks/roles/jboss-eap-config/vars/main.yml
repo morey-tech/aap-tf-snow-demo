@@ -10,5 +10,4 @@ eap_home: "{{ eap_deploy_dir }}/jboss-eap-{{eap_version}}"
 eap_all: "{{ eap_deploy_dir }}/jboss-eap-*/"
 rhel_initd: /etc/init.d
 jboss_eap_service_conf_dir: "/etc/default"
-app_url: 'https://drive.google.com/uc?export=download&id=1w9ss5okctnjUvRAxhPEPyC7DmbUwmbhb'
-app_name: 'info-1.1.war'
+app_name: info-1.1.war

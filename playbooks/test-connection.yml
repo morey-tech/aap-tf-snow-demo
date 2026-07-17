@@ -12,7 +12,7 @@
 
     - name: Confirm that the web server return a 200 code
       ansible.builtin.uri:
-        url: "http://{{ ansible_host }}:8080"
+        url: "http://{{ ansible_host }}:8080/info/"
         validate_certs: false
         status_code: 200
       when: "ws_group_name in group_names"
