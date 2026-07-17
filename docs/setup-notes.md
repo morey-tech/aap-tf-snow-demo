@@ -60,34 +60,6 @@ Create AWS dynamic inventory
 ![Image](./setup-images/6-aap-aws-dynamic-inventory.png)
 ---
 
-EDA Setup
-
-Create a project 
-![Image](./setup-images/aap-eda-project-create.png)
-
-Create a user for EDA
-- https://aap-aap.apps.ocp-mgmt.rh-lab.morey.tech/access/users/create
-
-![Image](./setup-images/aap-eda-user-create.png)
-
-Create credential for EDA to connect to automation controller
-- https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_automation_decisions/eda-set-up-rhaap-credential-type
-
-![Image](./setup-images/aap-eda-cred-create.png)
-
-Create decision environment
-- https://aap-aap.apps.ocp-mgmt.rh-lab.morey.tech/decisions/decision-environments/create
-
-create rule book
-
-added route for rulebook (activiation job) service
-
-curl it
-```
-curl -H "Content-Type: application/json" -X POST https://servicenow-webhook-aap.apps.ocp-mgmt.rh-lab.morey.tech/ -d '{"description": "Your description here"}' --insecure
-```
----
-
 ## ServiceNow Set Up
 
 Business Rule - Trigger based on changes in tables
